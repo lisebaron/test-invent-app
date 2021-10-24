@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "test-inventApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

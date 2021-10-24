@@ -1,0 +1,8 @@
+{
+  "name": "test-inventApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "2e7dfe15"
+}
