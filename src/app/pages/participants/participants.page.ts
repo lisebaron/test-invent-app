@@ -57,9 +57,9 @@ export class ParticipantsPage implements OnInit {
         // this.participants.splice(index, 1);
         
         this.storage.set("allParticipants", this.participants).then(() => {
-          this.displayToast("success", "Le participant " + participant.name + " a bien été supprimé.");
+          this.displayToast("success", "Le participant " + participant.name + " a bien été modifié.");
         }, error => {
-          this.displayToast("danger", "Erreur lors de la suppression du participant " + participant.name + ".");
+          this.displayToast("danger", "Erreur lors de la modification du participant " + participant.name + ".");
         });
       }
     });

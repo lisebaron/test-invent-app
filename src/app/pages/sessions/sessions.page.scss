@@ -1,3 +1,23 @@
-.d-flex {
+.d-flex{
   display: flex;
+}
+.d-flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+.margin-right-5 {
+  margin-right: 5px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid;
+}
+
+.label-me {
+  font-size: medium;
+  font-weight: bold;
 }

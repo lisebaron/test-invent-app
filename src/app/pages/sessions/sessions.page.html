@@ -15,32 +15,42 @@
 
 <ion-content>
   <div *ngIf="sessions != null">
-    <div class="d-flex" *ngFor="let session of sessions">
-      <div>
+    <div *ngFor="let session of sessions">
+      <div class="d-flex-space-between margin-bottom-10 border-bottom">
         <div>
-          <label>Nom : </label>
-          <span>{{session.name}}</span>
-        </div>
-        <div>
-          <label>Date : </label>
-          {{session.date}}
-        </div>
-        <div>
-          <label>Participants : </label>
-          <div *ngFor="let participant of session.participants" >
-            {{participant.name}}
+          <div>
+            <label>Nom : </label>
+            <span>{{session.name}}</span>
           </div>
+
+          <div class="margin-bottom-10">
+            <label>Date : </label>
+            {{session.date}}
+          </div>
+
+          <div *ngIf="session.participants">
+            <label class="label-me">Participants : </label>
+            <ul>
+              <li *ngFor="let participant of session.participants" >
+                {{participant.name}}
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="!session.participants">Il n'y a aucun participant à cette session.</div>
+        </div>
+
+        <div class="d-flex">
+          <ion-fab-button class="margin-right-5" (click)="displayDeleteConfirmationAlert('Supprimer cette session?','Etes-vous sûr de vouloir supprimer cette session?', session)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button class="margin-right-5" (click)="displayEditSessionAlert(session)">
+            <ion-icon name="pencil"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button class="margin-right-5" (click)="displayAddParticipantsAlert(session)">
+            <ion-icon name="person-add"></ion-icon>
+          </ion-fab-button>
         </div>
       </div>
-      <ion-fab-button (click)="displayDeleteConfirmationAlert('Supprimer cette session?','Etes-vous sûr de vouloir supprimer cette session?', session)">
-        <ion-icon name="trash"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button (click)="displayEditSessionAlert(session)">
-        <ion-icon name="pencil"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button (click)="displayAddParticipantsAlert(session)">
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
     </div>
   </div>
 
