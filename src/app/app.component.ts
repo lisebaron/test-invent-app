@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -7,8 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public appPages = [
     { title: 'Home', url: '/pages/home', icon: 'home' },
-    { title: 'Participants', url: 'pages/participants', icon: 'paper-plane' },
-    { title: 'Sessions', url: 'pages/sessions', icon: 'heart' },
+    { title: 'Participants', url: 'pages/participants', icon: 'person' },
+    { title: 'Sessions', url: 'pages/sessions', icon: 'calendar' },
   ];
-  constructor() {}
+
+  constructor(private storage: Storage) {}
+
+  async ngOnInit() {
+    await this.storage.create();
+  }
 }

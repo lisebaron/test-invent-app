@@ -14,5 +14,30 @@
 </ion-header>
 
 <ion-content>
-  <div>coucou Participants</div>
+  <div *ngIf="participants != null">
+    <div class="d-flex" *ngFor="let participant of participants">
+      <div>
+        <div>
+          <label>Nom : </label>
+          <span>{{participant.name}}</span>
+        </div>
+        <div>
+          <label>Email : </label>
+          {{participant.email}}
+        </div>
+      </div>
+      <ion-fab-button (click)="displayDeleteConfirmationAlert('Supprimer ce participant?','Etes-vous sûr de vouloir supprimer ce participant?', participant)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="displayEditParticipantAlert(participant)">
+        <ion-icon name="pencil"></ion-icon>
+      </ion-fab-button>
+    </div>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="displayCreateParticipantAlert()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

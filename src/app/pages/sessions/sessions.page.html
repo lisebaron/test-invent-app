@@ -14,5 +14,39 @@
 </ion-header>
 
 <ion-content>
-  <div>coucou Sessions</div>
+  <div *ngIf="sessions != null">
+    <div class="d-flex" *ngFor="let session of sessions">
+      <div>
+        <div>
+          <label>Nom : </label>
+          <span>{{session.name}}</span>
+        </div>
+        <div>
+          <label>Date : </label>
+          {{session.date}}
+        </div>
+        <div>
+          <label>Participants : </label>
+          <div *ngFor="let participant of session.participants" >
+            {{participant.name}}
+          </div>
+        </div>
+      </div>
+      <ion-fab-button (click)="displayDeleteConfirmationAlert('Supprimer cette session?','Etes-vous sûr de vouloir supprimer cette session?', session)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="displayEditSessionAlert(session)">
+        <ion-icon name="pencil"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="displayAddParticipantsAlert(session)">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </div>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="displayCreateSessionAlert()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

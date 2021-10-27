@@ -14,5 +14,24 @@
 </ion-header>
 
 <ion-content>
-  <div>coucou</div>
+  <ion-spinner name="bubbles" *ngIf="loading"></ion-spinner>
+  <ion-grid *ngIf="!loading">
+    <ion-row>
+      <ion-col size-md="3" size="12" *ngFor="let photo of photos">
+        <div class="fade-in">
+          <ion-img [src]="photo.data"></ion-img>
+          <ion-fab-button class="button-container" (click)="displayDeletePhotoAlert('Supprimer cette image?','Êtes-vous sûr de vouloir supprimer cette image?', photo)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-fab-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="ImportPhoto()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>
